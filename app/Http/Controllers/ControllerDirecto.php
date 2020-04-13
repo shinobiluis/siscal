@@ -11,7 +11,8 @@ class ControllerDirecto extends Controller
 
     public function index()
     {
-        $directo = directo::offset(1)->limit(5)->get();
+        $directo = directo::offset(0)->limit(5)->get();
+        // $directo = directo::offset(0)->paginate(5); // Paginacion
         return response()->json(['success' => $directo], $this->successStatus);
     }
 
@@ -22,6 +23,7 @@ class ControllerDirecto extends Controller
     }
 
     public function store(Request $request){
+        
         $input = $request->all(); 
         $user = directo::create($input);
         return response()->json(['status' => $this->successStatus], $this->successStatus); 
@@ -29,6 +31,7 @@ class ControllerDirecto extends Controller
 
     public function update(Request $request, $curp)
     {
+        // dd($request->all());
         directo::where('curp',$curp)->update($request->all());
         return response()->json([
             'status' => $this->successStatus,

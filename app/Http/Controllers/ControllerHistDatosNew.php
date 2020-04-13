@@ -37,6 +37,7 @@ class ControllerHistDatosNew extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request->all());
         $input = $request->all(); 
         $user = hist_datos_new::create($input);
         return response()->json(['status' => $this->successStatus], $this->successStatus);
@@ -48,9 +49,9 @@ class ControllerHistDatosNew extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($num_pen)
+    public function show($curp)
     {
-        $directo = hist_datos_new::where('num_pen', $num_pen)->get();
+        $directo = hist_datos_new::where('curp', $curp)->get();
         return response()->json(['success' => $directo], $this->successStatus);
     }
 
@@ -72,13 +73,13 @@ class ControllerHistDatosNew extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $num_pen)
+    public function update(Request $request, $curp)
     {
-        // dd($num_pen);
-        hist_datos_new::where('num_pen',$num_pen)->update($request->all());
+        // dd($curp);
+        hist_datos_new::where('curp',$curp)->update($request->all());
         return response()->json([
             'status' => $this->successStatus,
-            'num_pen' => $num_pen
+            'num_pen' => $curp
         ], $this->successStatus);
     }
 
@@ -88,9 +89,9 @@ class ControllerHistDatosNew extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($num_pen)
+    public function destroy($curp)
     {
-        $deletedRows = hist_datos_new::where('num_pen', $num_pen)->delete();
+        $deletedRows = hist_datos_new::where('curp', $curp)->delete();
         return response()->json(['status' => $this->successStatus], $this->successStatus);
     }
 }

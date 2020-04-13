@@ -31,17 +31,17 @@ Route::put('directo/update/{curp}', 'ControllerDirecto@update' );
  * Rutas para HistDatosNew
  */
 Route::get('datos/show', 'ControllerHistDatosNew@index');
-Route::get('datos/{num_pen}', 'ControllerHistDatosNew@show');
+Route::get('datos/{curp}', 'ControllerHistDatosNew@show');
 Route::post('datos/create', 'ControllerHistDatosNew@store' );
-Route::delete('datos/delete/{num_pen}', 'ControllerHistDatosNew@destroy' );
-Route::put('datos/update/{num_pen }', 'ControllerHistDatosNew@update' );
+Route::delete('datos/delete/{curp}', 'ControllerHistDatosNew@destroy' );
+Route::put('datos/update/{curp}', 'ControllerHistDatosNew@update' );
 
 
 /**
  * 
  */
 Route::get('datospen/show', 'ControllerDatosPen@index');
-Route::get('datospen/{num_pen}', 'ControllerDatosPen@show');
+Route::get('datospen/{curp}', 'ControllerDatosPen@show');
 Route::post('datospen/create', 'ControllerDatosPen@store' );
-Route::delete('datospen/delete/{num_pen}', 'ControllerDatosPen@destroy' );
-Route::put('datospen/update/{num_pen}', 'ControllerDatosPen@update' );
+Route::delete('datospen/delete/{curp}', 'ControllerDatosPen@destroy' );
+Route::put('datospen/update/{curp}', 'ControllerDatosPen@update' );

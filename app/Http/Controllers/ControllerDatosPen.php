@@ -48,9 +48,9 @@ class ControllerDatosPen extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($num_pen)
+    public function show($curp)
     {
-        $directo = datospen::where('num_pen', $num_pen)->get();
+        $directo = datospen::where('curp', $curp)->get();
         return response()->json(['success' => $directo], $this->successStatus);
     }
 
@@ -72,12 +72,12 @@ class ControllerDatosPen extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $num_pen)
+    public function update(Request $request, $curp)
     {
-        datospen::where('num_pen',$num_pen)->update($request->all());
+        datospen::where('curp',$curp)->update($request->all());
         return response()->json([
             'status' => $this->successStatus,
-            'num_pen' => $num_pen
+            'curp' => $curp
         ], $this->successStatus);
     }
 
@@ -87,9 +87,9 @@ class ControllerDatosPen extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($num_pen)
+    public function destroy($curp)
     {
-        $deletedRows = datospen::where('num_pen', $num_pen)->delete();
+        $deletedRows = datospen::where('curp', $curp)->delete();
         return response()->json(['status' => $this->successStatus], $this->successStatus);
     }
 }
